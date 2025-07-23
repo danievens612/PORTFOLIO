@@ -1,0 +1,171 @@
+/* General Styles */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+
+}
+
+body {
+    font-family: 'Arial', sans-serif;
+    display: flex;
+    height: 100vh;
+      background-image: url('background_main.jpg'); /* Set background image here */
+      background-color: #f3f0f0;
+
+    margin: 0;
+}
+
+.container {
+    display: flex;
+    justify-content: center; /* This centers the content (left-side and right-side) horizontally */
+    align-items: center;     /* This centers the content vertically */
+    width: 100%;
+    height: 100%;
+}
+
+
+/* Left side container (we keep it centered too) */
+.left-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+
+
+.left-side h1 {
+    font-size: 700%;
+}
+
+.right-side {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 30px;
+    position: relative;
+    margin-top: 50px;
+    margin-bottom: 50px;
+    width: 50%; /* Optional: Adjust width of the right-side if needed */
+}
+
+
+.zoom-text {
+    font-size: 250px;
+    font-weight: Heavy ;
+    color: rgb(145, 40, 243);
+    position: absolute;
+    left: 60px;
+    animation: zoomInOut 5s ease-in-out infinite;
+}
+
+@keyframes zoomInOut {
+    0% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.5);
+    }
+    100% {
+        transform: scale(1);
+    }
+}
+
+
+.sign-In span {
+    display: block;
+    text-align: center;
+    position: relative;
+    z-index: 1;
+    font-size: 15px;
+    font-weight: 600;
+    line-height: 24px;
+    color: var(--text-color);
+    opacity: var(--text-o);
+    transform: translateX(var(-text-x)) translateZ(0);
+}
+.sign-In  .key
+.sign-In  .sign-In  {
+    pointer-events: all;
+    position: absolute;
+}
+
+
+
+
+
+
+.form-container {
+    position: fixed;
+    top: 50%;
+    left: 70%; /* Move to the right */
+    transform: translate(-50%, -50%); /* Keep it vertically centered */
+    max-width: 400px;
+    width: 100%;
+    background-color: rgb(245, 244, 248);
+    padding: 30px;
+    box-shadow: 0 4px 100px rgb(62, 88, 173);
+    border-radius: 10px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.form-container.show {
+    opacity: 1;
+    visibility: visible;
+}
+
+
+h2 {
+    text-align: ;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="password"] {
+    padding: 12px;
+    font-size: 14px;
+    border: 1px solid #383636;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
+
+
+
+button {
+    padding: 12px;
+    background-color: #1127f0;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+button:hover {
+    background-color: #121213;
+}
+
+button:active {
+    transform: scale(0.98);
+}
+
+p {
+    font-size: 14px;
+    color: #f3f0f0;
+    cursor: pointer;
+    text-align: center;
+    transition: color 0.3s ease;
+}
+
+

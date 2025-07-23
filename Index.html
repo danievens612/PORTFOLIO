@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sign In / Sign Up</title>
+    <link rel="stylesheet" href="style.css">
+    <script>
+        // Function to toggle between Sign In and Sign Up forms
+        function toggleForms() {
+            const signUpForm = document.getElementById('signupForm');
+            const signInForm = document.getElementById('signinForm');
+            const toggleButton = document.getElementById('toggleButton');
+
+            // Toggle visibility
+            if (signUpForm.classList.contains('show')) {
+                // Hide Sign Up, Show Sign In
+                signUpForm.classList.remove('show');
+                signInForm.classList.add('show');
+                toggleButton.innerText = "Don't have an account? Sign Up";
+            } else {
+                // Hide Sign In, Show Sign Up
+                signInForm.classList.add('show');
+                signUpForm.classList.add('show');
+                Button.innerText = 'Already have an account? Sign In';
+            }
+        }
+
+        // Function to handle Sign Up (saving to local storage for now)
+        function signUp(event) {
+            event.preventDefault();
+
+            const username = document.getElementById('username').value;
+            const email = document.getElementById('email').value;
+            const password = document.getElementById('password').value;
+            const confirmPassword = document.getElementById('confirmPassword').value;
+
+            if (password === confirmPassword) {
+                // Save data in localStorage (for now, simulating a backend)
+                const userData = { username, email, password };
+                localStorage.setItem("user", JSON.stringify(userData));
+
+                alert('Sign Up successful!');
+                // Automatically switch to Sign In form after sign up
+                toggleForms();
+            } else {
+                alert('Passwords do not match!');
+            }
+        }
+
+        // Function to handle Sign In (checking credentials from localStorage)
+        function signIn(event) {
+            event.preventDefault();
+
+            const email = document.getElementById('signinEmail').value;
+            const password = document.getElementById('signinPassword').value;
+
+            // Check against the stored user data in localStorage
+            const storedUser = JSON.parse(localStorage.getItem('user'));
+
+            if (storedUser && storedUser.email === email && storedUser.password === password) {
+                window.location.href = "homepage.html"; // Redirect to homepage on success
+            } else {
+                alert('Invalid email or password! Please try again.');
+            }
+        }
+
+        // Function for guest login (bypassing authentication)
+        function guestLogin() {
+            window.location.href = "homepage.html"; // Redirect to homepage as guest
+        }
+    </script>
+</head>
+<body>
+    <div class="container">
+        <!-- Left Side: DANI EVENS + Image -->
+        <div class="left-side">
+            <div class="zoom-text"> ĐΔŇƗ €V€NŞ </div>
+        </div> 
+        <div class="form-container"></div>
+
+        <!-- Right Side: Forms -->
+        <div class="right-side">
+            <!-- Sign Up Form -->
+            <div id="signupForm" class="form-container show">
+                <h2>Sign Up</h2>
+                <form onsubmit="signUp(event)">
+                    <label for="username">Username</label>
+                    <input type="text" id="username" name="username" required>
+
+                    <label for="email">Email</label>
+                    <input type="email" id="email" name="email" required>
+
+                    <label for="password">Password</label>
+                    <input type="password" id="password" name="password" required>
+
+                    <label for="confirmPassword">Confirm Password</label>
+                    <input type="password" id="confirmPassword" name="confirmPassword" required>
+
+                    <button type="submit">Sign Up</button>
+                </form>
+                <p id="toggleButton" onclick="toggleForms()">Already have an account? Sign In</p>
+                <button onclick="guestLogin()">Continue as Guest</button>
+            </div>
+
+            <!-- Sign In Form -->
+            <div id="signinForm" class="form-container">
+                <h2>Sign In</h2>
+                <form onsubmit="signIn(event)">
+                    <label for="signinEmail">Email</label>
+                    <input type="email" id="signinEmail" name="email" required>
+
+                    <label for="signinPassword">Password</label>
+                    <input type="password" id="signinPassword" name="password" required>
+
+                    <button type="submit">Sign In</button>
+                </form>
+                <p id="toggleButton" onclick="toggleForms()">Don't have an account? Sign Up</p>
+                <!-- Sign In Form -->
+<form onsubmit="validateLogin(event)">
+    <label for="signinEmail">Email</label>
+    <input type="email" id="signinEmail" name="email" required>
+
+    <label for="signinPassword">Password</label>
+    <input type="password" id="signinPassword" name="password" required>
+
+    <button type="submit">Sign In</button>
+</form>
+
+<script>
+    // Validate Sign In credentials
+    function validateLogin(event) {
+        event.preventDefault(); // Prevent form from submitting normally
+
+        // Get the input values from the form
+        var email = document.getElementById('signinEmail').value;
+        var password = document.getElementById('signinPassword').value;
+
+        // Debugging: Log the values entered
+        console.log('Entered email: ' + email);
+        console.log('Entered password: ' + password);
+
+        // Hardcoded credentials (for testing)
+        var validEmail = "test@example.com";
+        var validPassword = "password123";
+
+        // Check if the entered credentials match the valid ones
+        if (email === validEmail && password === validPassword) {
+            // Redirect to homepage if credentials are correct
+            window.location.href = "homepage.html"; // You can change this to your actual homepage path
+        } else {
+            alert("Invalid email or password! Please try again.");
+        }
+    }
+</script>
+
+            </div>
+        </div>
+    </div>
+</body>
+</html>
